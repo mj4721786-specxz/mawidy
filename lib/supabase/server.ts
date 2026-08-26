@@ -1,9 +1,6 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-// Used inside Server Components, Server Actions, and API routes.
-// Reads the logged-in user's session from cookies so RLS policies
-// (owner_id = auth.uid()) apply automatically.
 export function createClient() {
   const cookieStore = cookies();
   return createServerClient(
