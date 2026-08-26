@@ -1,8 +1,6 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-// Blocks access to /dashboard and /admin unless the user is logged in.
-// This is a UX guard only — the real security boundary is Postgres RLS.
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
