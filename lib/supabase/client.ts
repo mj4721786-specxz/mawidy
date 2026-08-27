@@ -1,10 +1,8 @@
 import { createBrowserClient } from "@supabase/ssr";
 
-// Used inside client components ("use client"). Safe to expose —
-// relies on Row Level Security to restrict what each user can see.
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://dkfmhjgdqokxwcmlrwdv.supabase.co";
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "sb_publishable_kKXiaiPOHk-2QqzBbRT1tQ_xiqhdAxg";
+
 export function createClient() {
-  return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  return createBrowserClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
