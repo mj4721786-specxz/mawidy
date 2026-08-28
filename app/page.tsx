@@ -4,8 +4,8 @@ export default function HomePage() {
       <header className="border-b border-white/10">
         <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
           <span className="text-2xl font-bold text-[#F1EAD8]">موعدي</span>
-          <a href="mailto:hello@mawidy.app" className="text-sm text-[#7FA39B] hover:text-white">
-            تواصل معنا
+          <a href="/login" className="text-sm text-[#7FA39B] hover:text-white">
+            تسجيل الدخول
           </a>
         </div>
       </header>
@@ -22,9 +22,18 @@ export default function HomePage() {
             كل عيادة تحصل على صفحة حجز خاصة فيها، والمريض يحجز موعده مباشرة
             بدون اتصال أو انتظار.
           </p>
-          <div className="flex items-center justify-center gap-4">
-            <a href="/clinic/al-shifa" className="bg-[#E2A63C] text-[#0F2B28] font-bold px-6 py-3 rounded">
-              جرّب صفحة حجز تجريبية
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <a
+              href="/register"
+              className="bg-[#E2A63C] text-[#0F2B28] font-bold px-6 py-3 rounded"
+            >
+              سجّل عيادتك
+            </a>
+            <a
+              href="/login"
+              className="text-[#E4EEEA] border border-white/20 px-6 py-3 rounded hover:border-white/40"
+            >
+              عندي حساب، تسجيل الدخول
             </a>
           </div>
         </div>
