@@ -20,11 +20,12 @@ export default async function DashboardLayout({ children }: { children: React.Re
           <div>
             <span className="font-bold">{clinic?.name ?? "لوحة التحكم"}</span>
           </div>
-          <nav className="flex items-center gap-6 text-sm">
+          <nav className="flex items-center gap-4 text-sm flex-wrap">
             <a href="/dashboard" className="text-[#E4EEEA] hover:text-[#E2A63C]">الرئيسية</a>
             <a href="/dashboard/appointments" className="text-[#E4EEEA] hover:text-[#E2A63C]">الحجوزات</a>
             <a href="/dashboard/doctors" className="text-[#E4EEEA] hover:text-[#E2A63C]">الأطباء</a>
             <a href="/dashboard/patients" className="text-[#E4EEEA] hover:text-[#E2A63C]">المرضى</a>
+            <a href="/dashboard/hours" className="text-[#E4EEEA] hover:text-[#E2A63C]">أوقات الدوام</a>
             <SignOutButton />
           </nav>
         </div>
