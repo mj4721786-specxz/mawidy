@@ -24,6 +24,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
             <a href="/dashboard" className="text-[#E4EEEA] hover:text-[#E2A63C]">الرئيسية</a>
             <a href="/dashboard/appointments" className="text-[#E4EEEA] hover:text-[#E2A63C]">الحجوزات</a>
             <a href="/dashboard/doctors" className="text-[#E4EEEA] hover:text-[#E2A63C]">الأطباء</a>
+            <a href="/dashboard/patients" className="text-[#E4EEEA] hover:text-[#E2A63C]">المرضى</a>
             <SignOutButton />
           </nav>
         </div>
