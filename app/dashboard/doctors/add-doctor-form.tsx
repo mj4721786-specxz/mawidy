@@ -4,7 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
-export default function AddDoctorForm({ clinicId }: { clinicId: string | undefined }) {
+export default function AddDoctorForm({
+  clinicId,
+  canAddMore,
+}: {
+  clinicId: string | undefined;
+  canAddMore: boolean;
+}) {
   const router = useRouter();
   const supabase = createClient();
 
@@ -52,6 +58,15 @@ export default function AddDoctorForm({ clinicId }: { clinicId: string | undefin
     setDuration(30);
     setLoading(false);
     router.refresh();
+  }
+
+  if (!canAddMore) {
+    return (
+      <div className="bg-orange-50 border border-orange-200 rounded-lg p-5 text-center">
+        <p className="text-orange-800 font-bold mb-1">وصلت للحد الأقصى من الأطباء بخطتك الحالية</p>
+        <p className="text-sm text-orange-700">روح لصفحة الاشتراكات وترقّى لخطة أعلى حتى تضيف أطباء أكتر.</p>
+      </div>
+    );
   }
 
   return (
