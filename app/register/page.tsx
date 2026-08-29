@@ -51,21 +51,32 @@ export default function RegisterPage() {
       return;
     }
 
-    const { error: clinicError } = await supabase.from("clinics").insert({
-      owner_id: signUpData.user!.id,
-      name: clinicName,
-      slug: cleanSlug,
-    });
+    const { data: newClinic, error: clinicError } = await supabase
+      .from("clinics")
+      .insert({
+        owner_id: signUpData.user!.id,
+        name: clinicName,
+        slug: cleanSlug,
+      })
+      .select("id")
+      .single();
 
-    if (clinicError) {
+    if (clinicError || !newClinic) {
       setError(
-        clinicError.code === "23505"
+        clinicError?.code === "23505"
           ? "رابط العيادة هذا مستخدم من عيادة تانية، جرب رابط مختلف"
           : "تم إنشاء حسابك، بس صار خطأ بإنشاء العيادة. تواصل معنا."
       );
       setLoading(false);
       return;
     }
+
+    await supabase.from("subscriptions").insert({
+      clinic_id: newClinic.id,
+      plan: "basic",
+      price_iqd: 15000,
+      status: "trial",
+    });
 
     router.push("/dashboard");
     router.refresh();
