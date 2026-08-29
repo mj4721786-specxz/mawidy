@@ -1,4 +1,3 @@
-
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import SignOutButton from "../dashboard/sign-out-button";
@@ -24,6 +23,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <nav className="flex items-center gap-6 text-sm">
             <a href="/admin" className="text-gray-200 hover:text-[#E2A63C]">نظرة عامة</a>
             <a href="/admin/clinics" className="text-gray-200 hover:text-[#E2A63C]">العيادات</a>
+            <a href="/admin/subscriptions" className="text-gray-200 hover:text-[#E2A63C]">الاشتراكات</a>
             <SignOutButton />
           </nav>
         </div>
