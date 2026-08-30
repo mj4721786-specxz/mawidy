@@ -86,7 +86,7 @@ export default function HoursEditor({
         ))}
       </div>
 
-      <button onClick={save} disabled={loading} className="mt-4 bg-[#0F2B28] text-white px-5 py-2 rounded text-sm font-bold disabled:opacity-50">
+      <button onClick={save} disabled={loading} className="mt-4 bg-[#1CBCCF] text-white hover:bg-[#17a3b4] px-5 py-2 rounded-full text-sm font-bold disabled:opacity-50">
         {loading ? "جاري الحفظ..." : "حفظ الدوام"}
       </button>
       {saved && <span className="text-green-600 text-sm mr-3">تم الحفظ ✓</span>}
