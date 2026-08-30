@@ -16,14 +16,14 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!adminRow) redirect("/dashboard");
 
   return (
-    <div dir="rtl" className="min-h-screen bg-gray-50">
-      <header className="bg-[#1B1420] text-white">
+    <div dir="rtl" className="min-h-screen bg-[#F5F8F8]">
+      <header className="bg-white border-b border-black/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="font-bold">لوحة تحكم موعدي — Admin</span>
+          <span className="font-bold text-[#111]">لوحة تحكم موعدي — Admin</span>
           <nav className="flex items-center gap-6 text-sm">
-            <a href="/admin" className="text-gray-200 hover:text-[#E2A63C]">نظرة عامة</a>
-            <a href="/admin/clinics" className="text-gray-200 hover:text-[#E2A63C]">العيادات</a>
-            <a href="/admin/subscriptions" className="text-gray-200 hover:text-[#E2A63C]">الاشتراكات</a>
+            <a href="/admin" className="text-[#4C5354] hover:text-[#1CBCCF]">نظرة عامة</a>
+            <a href="/admin/clinics" className="text-[#4C5354] hover:text-[#1CBCCF]">العيادات</a>
+            <a href="/admin/subscriptions" className="text-[#4C5354] hover:text-[#1CBCCF]">الاشتراكات</a>
             <SignOutButton />
           </nav>
         </div>
