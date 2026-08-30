@@ -14,19 +14,19 @@ export default async function DashboardLayout({ children }: { children: React.Re
     .single();
 
   return (
-    <div dir="rtl" className="min-h-screen bg-gray-50">
-      <header className="bg-[#0F2B28] text-white">
+    <div dir="rtl" className="min-h-screen bg-[#F5F8F8]">
+      <header className="bg-white border-b border-black/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
-            <span className="font-bold">{clinic?.name ?? "لوحة التحكم"}</span>
+            <span className="font-bold text-[#111]">{clinic?.name ?? "لوحة التحكم"}</span>
           </div>
           <nav className="flex items-center gap-4 text-sm flex-wrap">
-            <a href="/dashboard" className="text-[#E4EEEA] hover:text-[#E2A63C]">الرئيسية</a>
-            <a href="/dashboard/appointments" className="text-[#E4EEEA] hover:text-[#E2A63C]">الحجوزات</a>
-            <a href="/dashboard/doctors" className="text-[#E4EEEA] hover:text-[#E2A63C]">الأطباء</a>
-            <a href="/dashboard/patients" className="text-[#E4EEEA] hover:text-[#E2A63C]">المرضى</a>
-            <a href="/dashboard/hours" className="text-[#E4EEEA] hover:text-[#E2A63C]">أوقات الدوام</a>
-            <a href="/dashboard/settings" className="text-[#E4EEEA] hover:text-[#E2A63C]">الإعدادات</a>
+            <a href="/dashboard" className="text-[#4C5354] hover:text-[#1CBCCF]">الرئيسية</a>
+            <a href="/dashboard/appointments" className="text-[#4C5354] hover:text-[#1CBCCF]">الحجوزات</a>
+            <a href="/dashboard/doctors" className="text-[#4C5354] hover:text-[#1CBCCF]">الأطباء</a>
+            <a href="/dashboard/patients" className="text-[#4C5354] hover:text-[#1CBCCF]">المرضى</a>
+            <a href="/dashboard/hours" className="text-[#4C5354] hover:text-[#1CBCCF]">أوقات الدوام</a>
+            <a href="/dashboard/settings" className="text-[#4C5354] hover:text-[#1CBCCF]">الإعدادات</a>
             <SignOutButton />
           </nav>
         </div>
