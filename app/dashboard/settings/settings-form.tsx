@@ -57,7 +57,7 @@ export default function SettingsForm({ clinic }: { clinic: Clinic }) {
           <code dir="ltr" className="bg-gray-100 px-3 py-2 rounded text-sm flex-1 break-all">
             {clinicUrl}
           </code>
-          <button onClick={copyLink} className="bg-[#0F2B28] text-white px-4 py-2 rounded text-sm font-bold">
+          <button onClick={copyLink} className="bg-[#1CBCCF] text-white hover:bg-[#17a3b4] px-4 py-2 rounded-full text-sm font-bold">
             {copied ? "تم النسخ ✓" : "نسخ الرابط"}
           </button>
         </div>
@@ -81,7 +81,7 @@ export default function SettingsForm({ clinic }: { clinic: Clinic }) {
           <input value={address} onChange={(e) => setAddress(e.target.value)} className="w-full border rounded p-2" />
         </div>
 
-        <button type="submit" disabled={loading} className="bg-[#E2A63C] text-[#0F2B28] font-bold px-5 py-2 rounded disabled:opacity-50">
+        <button type="submit" disabled={loading} className="bg-[#1CBCCF] text-white hover:bg-[#17a3b4] font-bold px-5 py-2 rounded-full disabled:opacity-50">
           {loading ? "جاري الحفظ..." : "حفظ التعديلات"}
         </button>
         {saved && <span className="text-green-600 text-sm mr-3">تم الحفظ ✓</span>}
