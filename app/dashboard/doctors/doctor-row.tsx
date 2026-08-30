@@ -57,7 +57,7 @@ export default function DoctorRow({ doctor }: { doctor: Doctor }) {
           </select>
         </div>
         <div className="flex gap-2">
-          <button onClick={saveEdit} disabled={loading} className="text-xs bg-[#0F2B28] text-white px-4 py-2 rounded">
+          <button onClick={saveEdit} disabled={loading} className="text-xs bg-[#1CBCCF] text-white hover:bg-[#17a3b4] px-4 py-2 rounded-full">
             حفظ
           </button>
           <button onClick={() => setEditing(false)} className="text-xs border px-4 py-2 rounded">
