@@ -85,7 +85,7 @@ export default function AddDoctorForm({
 
       {error && <p className="text-red-600 text-sm">{error}</p>}
 
-      <button type="submit" disabled={loading} className="bg-[#0F2B28] text-white px-5 py-2 rounded font-bold disabled:opacity-50">
+      <button type="submit" disabled={loading} className="bg-[#1CBCCF] text-white hover:bg-[#17a3b4] px-5 py-2 rounded-full font-bold disabled:opacity-50">
         {loading ? "جاري الإضافة..." : "أضف الطبيب"}
       </button>
       <p className="text-xs text-gray-500">
