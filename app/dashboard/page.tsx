@@ -35,13 +35,13 @@ export default async function DashboardHome() {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         {stats.map((s) => (
           <div key={s.label} className="bg-white border rounded-lg p-5">
-            <div className="text-3xl font-bold text-[#0F2B28]">{s.value}</div>
+            <div className="text-3xl font-bold text-[#1CBCCF]">{s.value}</div>
             <div className="text-sm text-gray-500 mt-1">{s.label}</div>
           </div>
         ))}
       </div>
 
-      <a href="/dashboard/appointments" className="inline-block mt-8 bg-[#E2A63C] text-[#0F2B28] font-bold px-5 py-2.5 rounded">
+      <a href="/dashboard/appointments" className="inline-block mt-8 bg-[#1CBCCF] text-white font-bold px-5 py-2.5 rounded-full hover:bg-[#17a3b4]">
         عرض كل الحجوزات
       </a>
     </div>
