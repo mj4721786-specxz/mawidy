@@ -4,7 +4,15 @@ import { useState } from "react";
 
 type Doctor = { id: string; full_name: string; specialty: string; slot_duration_minutes: number };
 
-export default function BookingForm({ clinicSlug, doctors }: { clinicSlug: string; doctors: Doctor[] }) {
+export default function BookingForm({
+  clinicSlug,
+  doctors,
+  clinicPhone,
+}: {
+  clinicSlug: string;
+  doctors: Doctor[];
+  clinicPhone: string | null;
+}) {
   const [doctorId, setDoctorId] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -50,6 +58,11 @@ export default function BookingForm({ clinicSlug, doctors }: { clinicSlug: strin
     const waMessage = encodeURIComponent(
       `تأكيد حجز\nالطبيب: ${result.doctorName}\nالتاريخ: ${result.date}\nالوقت: ${result.time}\nالمريض: ${result.name}`
     );
+    const cleanPhone = clinicPhone?.replace(/[^0-9]/g, "");
+    const waUrl = cleanPhone
+      ? `https://wa.me/${cleanPhone}?text=${waMessage}`
+      : `https://wa.me/?text=${waMessage}`;
+
     return (
       <div className="border border-[#1CBCCF]/30 rounded-2xl p-6 bg-[#E8F0F1]">
         <h2 className="text-xl font-bold text-[#0e8a99] mb-3">تم حجز موعدك بنجاح ✅</h2>
@@ -58,7 +71,7 @@ export default function BookingForm({ clinicSlug, doctors }: { clinicSlug: strin
         <p>الوقت: {result.time}</p>
         <p>الاسم: {result.name}</p>
 
-        <a href={`https://wa.me/?text=${waMessage}`} target="_blank" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded-full">
+        <a href={waUrl} target="_blank" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded-full">
           إرسال التفاصيل عبر واتساب
         </a>
       </div>
