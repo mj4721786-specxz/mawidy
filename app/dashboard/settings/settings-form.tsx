@@ -25,13 +25,27 @@ export default function SettingsForm({ clinic }: { clinic: Clinic }) {
 
   const clinicUrl =
     typeof window !== "undefined"
-      ? `${window.location.origin}/clinic/${clinic.slug}`
-      : `/clinic/${clinic.slug}`;
+      ? `${window.location.origin}/c/${clinic.slug}`
+      : `/c/${clinic.slug}`;
+
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(clinicUrl)}`;
 
   function copyLink() {
     navigator.clipboard.writeText(clinicUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  }
+
+  async function shareLink() {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: clinic.name, url: clinicUrl });
+      } catch {
+        // user cancelled — no action needed
+      }
+    } else {
+      copyLink();
+    }
   }
 
   async function handleSave(e: React.FormEvent) {
@@ -53,13 +67,25 @@ export default function SettingsForm({ clinic }: { clinic: Clinic }) {
     <div className="space-y-6 max-w-lg">
       <div className="bg-white border rounded-lg p-5">
         <h2 className="font-bold mb-2">رابط عيادتك (شاركه مع مرضاك)</h2>
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap mb-4">
           <code dir="ltr" className="bg-gray-100 px-3 py-2 rounded text-sm flex-1 break-all">
             {clinicUrl}
           </code>
+        </div>
+        <div className="flex items-center gap-2 flex-wrap">
           <button onClick={copyLink} className="bg-[#1CBCCF] text-white hover:bg-[#17a3b4] px-4 py-2 rounded-full text-sm font-bold">
             {copied ? "تم النسخ ✓" : "نسخ الرابط"}
           </button>
+          <button onClick={shareLink} className="border border-black/15 px-4 py-2 rounded-full text-sm font-bold text-[#111]">
+            مشاركة
+          </button>
+        </div>
+
+        <div className="mt-5 pt-5 border-t border-black/5 flex items-center gap-4">
+          <img src={qrCodeUrl} alt="QR Code لرابط العيادة" className="w-24 h-24 border rounded" />
+          <p className="text-sm text-gray-500">
+            اطبع هذا الرمز وحطه بعيادتك — المريض يصوره بكاميرا جواله ويوصل لصفحة الحجز مباشرة.
+          </p>
         </div>
       </div>
 
@@ -72,8 +98,8 @@ export default function SettingsForm({ clinic }: { clinic: Clinic }) {
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">رقم الهاتف</label>
-          <input value={phone} onChange={(e) => setPhone(e.target.value)} dir="ltr" className="w-full border rounded p-2" />
+          <label className="block text-sm text-gray-600 mb-1">رقم الهاتف (يستخدم لاستقبال حجوزات واتساب)</label>
+          <input value={phone} onChange={(e) => setPhone(e.target.value)} dir="ltr" placeholder="9647701234567" className="w-full border rounded p-2" />
         </div>
 
         <div>
