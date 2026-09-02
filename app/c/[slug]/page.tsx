@@ -25,7 +25,7 @@ export default async function ClinicPage({ params }: { params: { slug: string } 
       <h1 className="text-2xl font-bold mb-1 text-[#111]">{clinic.name}</h1>
       {clinic.address && <p className="text-[#4C5354] mb-6">{clinic.address}</p>}
 
-      <BookingForm clinicSlug={params.slug} doctors={doctors ?? []} />
+      <BookingForm clinicSlug={params.slug} doctors={doctors ?? []} clinicPhone={clinic.phone} />
     </main>
   );
 }
