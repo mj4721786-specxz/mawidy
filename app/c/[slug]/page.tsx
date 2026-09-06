@@ -14,7 +14,7 @@ export default async function ClinicPage({ params }: { params: { slug: string } 
 
   if (!clinic) notFound();
 
-  const { data: doctors } = await supabase
+  const { data: doctors, error: doctorsError } = await supabase
     .from("doctors")
     .select("id, full_name, specialty, slot_duration_minutes")
     .eq("clinic_id", clinic.id)
@@ -24,6 +24,12 @@ export default async function ClinicPage({ params }: { params: { slug: string } 
     <main dir="rtl" className="max-w-2xl mx-auto p-6 bg-[#E8F0F1] min-h-screen">
       <h1 className="text-2xl font-bold mb-1 text-[#111]">{clinic.name}</h1>
       {clinic.address && <p className="text-[#4C5354] mb-6">{clinic.address}</p>}
+
+      <div className="bg-yellow-50 border border-yellow-300 text-xs p-3 rounded mb-4" dir="ltr">
+        <p>DEBUG — clinic.id: {clinic.id}</p>
+        <p>DEBUG — doctors found: {doctors?.length ?? 0}</p>
+        <p>DEBUG — error: {doctorsError ? JSON.stringify(doctorsError) : "none"}</p>
+      </div>
 
       <BookingForm clinicSlug={params.slug} doctors={doctors ?? []} clinicPhone={clinic.phone} />
     </main>
